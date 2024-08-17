@@ -119,7 +119,6 @@ public class Main {
         System.out.print("Write current password: ");
         String currentPassword = scanner.nextLine();
 
-        // Поиск пользователя по email и паролю
         User userToUpdate = null;
         for (User dbUser : dbUsers.getDbUsers()) {
             if (email.equals(dbUser.getEmail()) && currentPassword.equals(dbUser.getPassword())) {
@@ -133,7 +132,7 @@ public class Main {
             return;
         }
 
-        // Если пользователь найден, запрашиваем новый пароль и его подтверждение
+        
         while (true) {
             System.out.print("Write new password: ");
             String newPassword = scanner.nextLine();
@@ -141,7 +140,7 @@ public class Main {
             String confirmPassword = scanner.nextLine();
 
             if (newPassword.equals(confirmPassword)) {
-                if (userToUpdate.isValidPassword(newPassword)) { // Проверка на валидность нового пароля
+                if (userToUpdate.isValidPassword(newPassword)) { // Проверка нового пароля 
                     userToUpdate.setPassword(newPassword);
                     System.out.println("Password has been updated successfully.");
                     break;
